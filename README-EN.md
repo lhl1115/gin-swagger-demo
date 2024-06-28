@@ -1,10 +1,10 @@
 # gin-swagger-demo
-简体中文 | [English](README-EN.md)
-使用gin-swagger在一个项目中生成多个swagger文档
 
-go 版本 >= 1.16
+gin-swagger create multiple api documents in one project
 
-下载demo
+go version >= 1.16
+
+download demo
 ```
 git clone github.com/lhl1115/gin-swagger-demo.git
 cd gin-swagger-demo
@@ -13,13 +13,12 @@ go run cmd/v1/main.go
 or 
 go run cmd/control/main.go
 ```
-访问浏览器查看Swagger文档
+view swagger documents in browser
 ```
 http://localhost:8081/swagger/v1/index.html
 http://localhost:8081/swagger/control/index.html
 ```
-
-生成swagger文档
+create swagger documents
 ```
 swag init -g  cmd/v1/main.go  -o ./docs/swag  --instanceName v1
 
