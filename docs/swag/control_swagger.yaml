@@ -1,0 +1,51 @@
+definitions:
+  api.Device:
+    properties:
+      address:
+        type: string
+      id:
+        type: integer
+      name:
+        type: string
+    type: object
+  serializer.Response:
+    properties:
+      code:
+        type: integer
+      data: {}
+      error:
+        type: string
+      msg:
+        type: string
+    type: object
+info:
+  contact:
+    name: -Full API
+    url: http://localhost:8081/swagger/v1/index.html
+  description: Control Full API v1.0
+  title: Control API
+  version: "1.0"
+paths:
+  /api/control/devices:
+    get:
+      consumes:
+      - application/json
+      description: get string by ID
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            allOf:
+            - $ref: '#/definitions/serializer.Response'
+            - properties:
+                data:
+                  items:
+                    $ref: '#/definitions/api.Device'
+                  type: array
+              type: object
+      summary: Get devices
+      tags:
+      - Devices
+swagger: "2.0"

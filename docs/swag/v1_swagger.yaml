@@ -1,0 +1,84 @@
+definitions:
+  api.Book:
+    properties:
+      author:
+        type: string
+      id:
+        type: integer
+      title:
+        type: string
+      year:
+        type: integer
+    type: object
+  api.Device:
+    properties:
+      address:
+        type: string
+      id:
+        type: integer
+      name:
+        type: string
+    type: object
+  serializer.Response:
+    properties:
+      code:
+        type: integer
+      data: {}
+      error:
+        type: string
+      msg:
+        type: string
+    type: object
+info:
+  contact:
+    name: -Control API
+    url: http://localhost:8081/swagger/control/index.html
+  description: Test Full API v1.0
+  title: Test API
+  version: "1.0"
+paths:
+  /api/control/devices:
+    get:
+      consumes:
+      - application/json
+      description: get string by ID
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            allOf:
+            - $ref: '#/definitions/serializer.Response'
+            - properties:
+                data:
+                  items:
+                    $ref: '#/definitions/api.Device'
+                  type: array
+              type: object
+      summary: Get devices
+      tags:
+      - Devices
+  /api/v1/books:
+    get:
+      consumes:
+      - application/json
+      description: get string by ID
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            allOf:
+            - $ref: '#/definitions/serializer.Response'
+            - properties:
+                data:
+                  items:
+                    $ref: '#/definitions/api.Book'
+                  type: array
+              type: object
+      summary: Get a list of books in the the store
+      tags:
+      - Books
+swagger: "2.0"
