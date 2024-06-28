@@ -7,7 +7,7 @@ go 版本 >= 1.16
 
 下载demo
 ```
-git clone github.com/lhl1115/gin-swagger-demo.git
+git clone https://github.com/lhl1115/gin-swagger-demo.git
 cd gin-swagger-demo
 go mod tidy
 go run cmd/v1/main.go
