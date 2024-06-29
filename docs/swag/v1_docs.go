@@ -83,7 +83,45 @@ const docTemplatev1 = `{
                                         "data": {
                                             "type": "array",
                                             "items": {
-                                                "$ref": "#/definitions/api.Book"
+                                                "$ref": "#/definitions/internal_v1_api.Book"
+                                            }
+                                        }
+                                    }
+                                }
+                            ]
+                        }
+                    }
+                }
+            }
+        },
+        "/api/v2/books": {
+            "get": {
+                "description": "get string by ID",
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "tags": [
+                    "Books"
+                ],
+                "summary": "Get a list of books in the the store",
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "allOf": [
+                                {
+                                    "$ref": "#/definitions/serializer.Response"
+                                },
+                                {
+                                    "type": "object",
+                                    "properties": {
+                                        "data": {
+                                            "type": "array",
+                                            "items": {
+                                                "$ref": "#/definitions/internal_v2_api.Book"
                                             }
                                         }
                                     }
@@ -96,7 +134,21 @@ const docTemplatev1 = `{
         }
     },
     "definitions": {
-        "api.Book": {
+        "api.Device": {
+            "type": "object",
+            "properties": {
+                "address": {
+                    "type": "string"
+                },
+                "id": {
+                    "type": "integer"
+                },
+                "name": {
+                    "type": "string"
+                }
+            }
+        },
+        "internal_v1_api.Book": {
             "type": "object",
             "properties": {
                 "author": {
@@ -113,17 +165,20 @@ const docTemplatev1 = `{
                 }
             }
         },
-        "api.Device": {
+        "internal_v2_api.Book": {
             "type": "object",
             "properties": {
-                "address": {
+                "author": {
                     "type": "string"
                 },
                 "id": {
                     "type": "integer"
                 },
-                "name": {
+                "title": {
                     "type": "string"
+                },
+                "year": {
+                    "type": "integer"
                 }
             }
         },

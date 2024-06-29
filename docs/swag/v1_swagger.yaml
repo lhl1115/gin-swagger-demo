@@ -1,5 +1,14 @@
 definitions:
-  api.Book:
+  api.Device:
+    properties:
+      address:
+        type: string
+      id:
+        type: integer
+      name:
+        type: string
+    type: object
+  internal_v1_api.Book:
     properties:
       author:
         type: string
@@ -10,14 +19,16 @@ definitions:
       year:
         type: integer
     type: object
-  api.Device:
+  internal_v2_api.Book:
     properties:
-      address:
+      author:
         type: string
       id:
         type: integer
-      name:
+      title:
         type: string
+      year:
+        type: integer
     type: object
   serializer.Response:
     properties:
@@ -75,7 +86,29 @@ paths:
             - properties:
                 data:
                   items:
-                    $ref: '#/definitions/api.Book'
+                    $ref: '#/definitions/internal_v1_api.Book'
+                  type: array
+              type: object
+      summary: Get a list of books in the the store
+      tags:
+      - Books
+  /api/v2/books:
+    get:
+      consumes:
+      - application/json
+      description: get string by ID
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            allOf:
+            - $ref: '#/definitions/serializer.Response'
+            - properties:
+                data:
+                  items:
+                    $ref: '#/definitions/internal_v2_api.Book'
                   type: array
               type: object
       summary: Get a list of books in the the store

@@ -1,0 +1,53 @@
+definitions:
+  api.Book:
+    properties:
+      author:
+        type: string
+      id:
+        type: integer
+      title:
+        type: string
+      year:
+        type: integer
+    type: object
+  serializer.Response:
+    properties:
+      code:
+        type: integer
+      data: {}
+      error:
+        type: string
+      msg:
+        type: string
+    type: object
+info:
+  contact:
+    name: -V1 API
+    url: http://localhost:8081/swagger/v1/index.html
+  description: Test API v2.0
+  title: Test API
+  version: "2.0"
+paths:
+  /api/v2/books:
+    get:
+      consumes:
+      - application/json
+      description: get string by ID
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            allOf:
+            - $ref: '#/definitions/serializer.Response'
+            - properties:
+                data:
+                  items:
+                    $ref: '#/definitions/api.Book'
+                  type: array
+              type: object
+      summary: Get a list of books in the the store
+      tags:
+      - Books
+swagger: "2.0"

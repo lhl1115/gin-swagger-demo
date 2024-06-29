@@ -7,6 +7,7 @@ import (
 	"github.com/gin-gonic/gin"
 	swaggerFiles "github.com/swaggo/files"
 	ginSwagger "github.com/swaggo/gin-swagger"
+	v2 "github.com/swaggo/gin-swagger/example/multiple/api/v2"
 )
 
 // @title Test API
@@ -21,6 +22,10 @@ func main() {
 	// Register v1 endpoints
 	v1.Register(router)
 	router.GET("/swagger/v1/*any", ginSwagger.WrapHandler(swaggerFiles.NewHandler(), ginSwagger.InstanceName("v1")))
+
+	// Register v2 endpoints
+	v2.Register(router)
+	router.GET("/swagger/v2/*any", ginSwagger.WrapHandler(swaggerFiles.NewHandler(), ginSwagger.InstanceName("v2")))
 
 	// Register control endpoints
 	control.Register(router)
