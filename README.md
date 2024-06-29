@@ -37,7 +37,6 @@ http://localhost:8081/swagger/control/index.html
 // 生成全部文档
 swag init -g  cmd/v1/main.go  -o ./docs/swag  --instanceName v1
 
-
 // 生成v2文档
 swag init -g  ../../cmd/v2/main.go  -d internal/v2  -o ./docs/swag  --parseDependency --instanceName v2
 
@@ -54,3 +53,5 @@ go build -o v2.exe ./cmd/v2
 // 打包后体积约26M 有swag文档
 go build -o v2_doc.exe -tags "doc" ./cmd/v2
 ```
+
+我也同步编写了一篇博客，如果您需要更详细的介绍，可以查看：[gin-swagger-blog](https://www.liuhouliang.com/post/gin-swagger/)
